@@ -1,0 +1,16 @@
+{
+  "name": "compass-crm",
+  "version": "0.1.0",
+  "description": "Multi-tenant CRM for small businesses: contacts, companies, deal pipeline, tasks and activity tracking.",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "seed": "node --disable-warning=ExperimentalWarning scripts/seed.js",
+    "test": "node --disable-warning=ExperimentalWarning --test \"test/**/*.test.js\""
+  }
+}
