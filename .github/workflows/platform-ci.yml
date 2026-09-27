@@ -1,0 +1,25 @@
+name: Platform CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: test (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['22.x', '24.x']
+    defaults:
+      run:
+        working-directory: platform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Check syntax
+        run: for f in src/*.js public/app.js scripts/*.js test/*.js; do node --check "$f"; done
+      - name: Run tests
+        run: npm test
